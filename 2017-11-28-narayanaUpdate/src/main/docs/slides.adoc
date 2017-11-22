@@ -1,0 +1,8 @@
+:revealjs_controls: false
+:revealjs_history: true
+:hash: #
+:example-caption!:
+ifndef::imagesdir[:imagesdir: images]
+ifndef::sourcedir[:sourcedir: ../../main/java]
+
+= Thesis update
