@@ -6,3 +6,42 @@ ifndef::imagesdir[:imagesdir: images]
 ifndef::sourcedir[:sourcedir: ../../main/java]
 
 = Thesis update
+
+== About me
+
+[%step]
+* EAP sustaining engineering
+* student - last year
+* programming enthusiast
+
+== Thesis
+
+[quote]
+____
+Use of Transactions within a Reactive Microservices Environment
+____
+
+https://issues.jboss.org/browse/JBTM-2920
+
+== Saga implementations exploring
+
+[%step]
+* http://www.axonframework.org[Axon framework] - implemented
+* http://eventuate.io/[Eventuate.io] - implemented
+** new Saga API
+* Narayana LRA - in progress
+
+== Sagas in Narayana
+
+* basic outline
+* event based
+** distributed transaction log
+* detailed discussion during EAP F2F
+
+== Resources
+
+* https://github.com/xstefank/axon-service
+* https://github.com/xstefank/eventuate-service
+* https://github.com/xstefank/lra-service
+
+== Questions
