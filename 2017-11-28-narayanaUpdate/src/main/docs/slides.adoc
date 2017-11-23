@@ -7,11 +7,15 @@ ifndef::sourcedir[:sourcedir: ../../main/java]
 
 = Thesis update
 
+{nbsp}
+
+Martin Stefanko
+
 == About me
 
 [%step]
 * EAP sustaining engineering
-* student - last year
+* student (computer systems) - last year
 * programming enthusiast
 
 == Thesis
@@ -40,8 +44,14 @@ https://issues.jboss.org/browse/JBTM-2920
 
 == Resources
 
+* https://www.cs.cornell.edu/andru/cs711/2002fa/reading/sagas.pdf
 * https://github.com/xstefank/axon-service
 * https://github.com/xstefank/eventuate-service
 * https://github.com/xstefank/lra-service
 
 == Questions
+
+- mstefank@redhat.com
+- https://twitter.com/xstefank[@xstefank]
+
+//TODO link to presentation
