@@ -1,0 +1,9 @@
+{
+  "name": "node-asciidoc",
+  "version": "0.0.1",
+  "description": "asciidoc decktape installer",
+
+  "dependencies": {
+    "decktape": "2.6.1"
+  }
+}
