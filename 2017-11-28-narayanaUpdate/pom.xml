@@ -137,6 +137,7 @@
                 <activeByDefault>false</activeByDefault>
             </activation>
             <build>
+                <defaultGoal>process-resources</defaultGoal>
                 <plugins>
                     <plugin>
                         <groupId>com.github.eirslett</groupId>
@@ -165,13 +166,30 @@
                                 <goals>
                                     <goal>npm</goal>
                                 </goals>
-                                <!-- Optional configuration which provides for running any npm command -->
                                 <configuration>
                                     <arguments>install</arguments>
                                 </configuration>
                             </execution>
 
                         </executions>
+                    </plugin>
+                    <plugin>
+                        <artifactId>exec-maven-plugin</artifactId>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <version>1.6.0</version>
+                        <executions>
+                            <execution>
+                                <id>generate-slides-pdf</id>
+                                <phase>process-resources</phase>
+                                <goals>
+                                    <goal>exec</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <executable>${basedir}/decktapeNode/node_modules/.bin/decktape</executable>
+                            <commandlineArgs>reveal ${project.slides.directory}/slides.html slides.pdf</commandlineArgs>
+                        </configuration>
                     </plugin>
                 </plugins>
             </build>
