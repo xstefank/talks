@@ -54,4 +54,4 @@ https://issues.jboss.org/browse/JBTM-2920
 - mstefank@redhat.com
 - https://twitter.com/xstefank[@xstefank]
 
-//TODO link to presentation
+http://bit.ly/2A1R6f4
