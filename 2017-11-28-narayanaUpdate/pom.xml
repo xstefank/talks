@@ -188,7 +188,7 @@
                         </executions>
                         <configuration>
                             <executable>${basedir}/decktapeNode/node_modules/.bin/decktape</executable>
-                            <commandlineArgs>reveal ${project.slides.directory}/slides.html slides.pdf</commandlineArgs>
+                            <commandlineArgs>reveal ${project.slides.directory}/slides.html slides.pdf -s 1920x1080</commandlineArgs>
                         </configuration>
                     </plugin>
                 </plugins>
