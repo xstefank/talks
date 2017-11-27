@@ -58,4 +58,4 @@ mstefank@redhat.com
 
 image:twitter-icon.png[twitter, width="3%", height="4%"] https://twitter.com/xstefank[@xstefank]
 
-http://bit.ly/2A1R6f4
+http://bit.ly/2ADRVfd
