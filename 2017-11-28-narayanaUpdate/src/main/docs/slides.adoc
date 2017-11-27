@@ -9,7 +9,7 @@ ifndef::sourcedir[:sourcedir: ../../main/java]
 
 {nbsp}
 
-Martin Stefanko
+Martin Štefanko
 
 == About me
 
@@ -33,28 +33,29 @@ https://issues.jboss.org/browse/JBTM-2920
 * http://www.axonframework.org[Axon framework] - implemented
 * http://eventuate.io/[Eventuate.io] - implemented
 ** new Saga API
-* Narayana LRA - in progress
+* https://github.com/jbosstm/microprofile-sandbox/blob/master/proposals/0009-LRA/README.md[Narayana LRA] - in progress
 * blog post
 
 == Sagas in Narayana
 
 * basic outline
+* reactive approach
 * event based
-** distributed transaction log
+** distributed event log
+** eventual consistency
 * detailed discussion during EAP F2F
 
 == Resources
 
-* https://www.cs.cornell.edu/andru/cs711/2002fa/reading/sagas.pdf
+* https://github.com/xstefank/thesis
 * https://github.com/xstefank/axon-service
 * https://github.com/xstefank/eventuate-service
 * https://github.com/xstefank/lra-service
 
 == Questions
 
-- mstefank@redhat.com
-- image:twitter-icon.png[twitter, width="4%", height="4%"] https://twitter.com/xstefank[@xstefank]
+mstefank@redhat.com
 
-
+image:twitter-icon.png[twitter, width="3%", height="4%"] https://twitter.com/xstefank[@xstefank]
 
 http://bit.ly/2A1R6f4
