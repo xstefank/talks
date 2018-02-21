@@ -1,0 +1,7 @@
+
+= 2017-11-28-narayanaUpdate
+
+== Running
+* `mvn` - generate `{build.dir}/generated-slides/slides.html`
+* `mvn -Ppublish-slides` - generate `slides.pdf` 
+
