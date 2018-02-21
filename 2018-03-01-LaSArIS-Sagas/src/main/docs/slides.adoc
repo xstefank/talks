@@ -6,3 +6,12 @@ ifndef::imagesdir[:imagesdir: images]
 ifndef::sourcedir[:sourcedir: ../../main/java]
 
 = Distributed Saga Transactions
+
+== ACID transaction
+
+[%step]
+* Atomicity
+* Consistency
+* Isolation
+* Durability
+
