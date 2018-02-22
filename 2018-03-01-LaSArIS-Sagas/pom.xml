@@ -94,7 +94,7 @@
                             <attributes>
                                 <revealjsdir>reveal.js-${revealjs.version}</revealjsdir>
                                 <sourcedir>${basedir}/src/main/java</sourcedir>
-                                <revealjs_theme>wildfly-swarm</revealjs_theme>
+                                <revealjs_theme>beige</revealjs_theme>
                                 <revealjs_transition>slide</revealjs_transition>
                                 <project-version>${project.version}</project-version>
                             </attributes>

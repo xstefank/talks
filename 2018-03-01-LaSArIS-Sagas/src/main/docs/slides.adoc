@@ -24,6 +24,7 @@ ifndef::sourcedir[:sourcedir: ../../main/java]
 
 * Saga pattern
   - compensations
+  - eventual consistency
 
 == !
 
@@ -31,5 +32,5 @@ image::2pc.png[background, size=70%]
 
 == !
 
-image Saga
+image::saga.png[background, size=70%]
 
