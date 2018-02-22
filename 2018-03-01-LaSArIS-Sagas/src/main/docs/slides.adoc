@@ -27,7 +27,7 @@ ifndef::sourcedir[:sourcedir: ../../main/java]
 
 == !
 
-image 2PC
+image::2pc.png[background, size=70%]
 
 == !
 
