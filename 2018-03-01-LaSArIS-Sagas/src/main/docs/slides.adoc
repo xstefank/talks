@@ -15,3 +15,21 @@ ifndef::sourcedir[:sourcedir: ../../main/java]
 * Isolation
 * Durability
 
+== Distributed transactions
+
+[%step]
+* Two phase commit protocol
+  - rollbacks
+  - blocking
+
+* Saga pattern
+  - compensations
+
+== !
+
+image 2PC
+
+== !
+
+image Saga
+
