@@ -7,6 +7,15 @@ ifndef::sourcedir[:sourcedir: ../../main/java]
 
 = Distributed Saga Transactions
 
+== Diploma thesis
+
+[quote]
+____
+Use of Transactions within a Reactive Microservices Environment
+____
+
+https://issues.jboss.org/browse/JBTM-2920
+
 == ACID transaction
 
 [%step]
@@ -22,7 +31,7 @@ ifndef::sourcedir[:sourcedir: ../../main/java]
   - rollbacks
   - blocking
 
-* Saga pattern
+* **Saga pattern**
   - compensations
   - eventual consistency
 
@@ -33,4 +42,23 @@ image::2pc.png[background, size=70%]
 == !
 
 image::saga.png[background, size=70%]
+
+== Saga implementation investigations
+
+[%step]
+* http://www.axonframework.org[Axon framework]
+* http://eventuate.io/[Eventuate.io]
+* https://github.com/jbosstm/microprofile-sandbox/blob/master/proposals/0009-LRA/README.md[Narayana LRA]
+* https://github.com/eventuate-tram/eventuate-tram-core[Eventuate Tram]
+* http://jbossts.blogspot.cz/2017/12/saga-implementations-comparison.html[blog post]
+
+== LRA executor extension
+
+[%step]
+* proof of concept prototype
+* LRA definition - asynchronicity
+* recovery capabilities
+* scalability
+* https://github.com/xstefank/lra-executor-extension
+
 
