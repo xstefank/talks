@@ -31,6 +31,7 @@ image::fowlerMS.png[size=70%]
 --
 - developed, tested, scaled and deployed independently
 - public API / interface
+- faster and more stable releases
 --
 
 == ACID transaction
@@ -46,6 +47,7 @@ image::fowlerMS.png[size=70%]
 - inseparable sequence of operations
 - all or nothing property
 - end in two states - committed or aborted
+- atomicity - all operation performed as a single operation
 - isolation levels
 --
 
@@ -58,6 +60,11 @@ image::fowlerMS.png[size=70%]
 * **Saga pattern**
   - compensations
   - eventual consistency
+
+[NOTE.speaker]
+--
+- 1987 - Hector Garcia-Molina and Kenneth Salem
+--
 
 == !
 
