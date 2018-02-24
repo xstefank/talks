@@ -16,6 +16,10 @@ ____
 
 https://issues.jboss.org/browse/JBTM-2920
 
+== Microservices architecture
+
+image::fowlerMS.png[size=70%]
+
 == ACID transaction
 
 [%step]
@@ -56,9 +60,10 @@ image::saga.png[background, size=70%]
 
 [%step]
 * proof of concept prototype
-* LRA definition - asynchronicity
+* LRA definition - asynchronous
 * recovery capabilities
 * scalability
+* protocol/platform independent
 * https://github.com/xstefank/lra-executor-extension
 
 
