@@ -7,7 +7,7 @@ ifndef::sourcedir[:sourcedir: ../../main/java]
 
 = Distributed Saga Transactions
 
-== Diploma thesis
+== Master thesis
 
 [quote]
 ____
@@ -16,9 +16,22 @@ ____
 
 https://issues.jboss.org/browse/JBTM-2920
 
+[NOTE.speaker]
+--
+- name, studies, RedHat
+- investigation thesis
+- outline - general introduction + what I did / going to do
+--
+
 == Microservices architecture
 
 image::fowlerMS.png[size=70%]
+
+[NOTE.speaker]
+--
+- developed, tested, scaled and deployed independently
+- public API / interface
+--
 
 == ACID transaction
 
@@ -28,11 +41,18 @@ image::fowlerMS.png[size=70%]
 * Isolation
 * Durability
 
+[NOTE.speaker]
+--
+- inseparable sequence of operations
+- all or nothing property
+- end in two states - committed or aborted
+- isolation levels
+--
+
 == Distributed transactions
 
 [%step]
 * Two phase commit protocol
-  - rollbacks
   - blocking
 
 * **Saga pattern**
@@ -59,11 +79,22 @@ image::saga.png[background, size=70%]
 == LRA executor extension
 
 [%step]
-* proof of concept prototype
+* proof of concept / prototype
 * LRA definition - asynchronous
 * recovery capabilities
 * scalability
 * protocol/platform independent
 * https://github.com/xstefank/lra-executor-extension
+
+
+== Questions
+
+== Thank you for your attention
+
+mstefank@redhat.com
+
+https://twitter.com/xstefank[@xstefank]
+
+http://bit.ly/2ADRVfd
 
 
