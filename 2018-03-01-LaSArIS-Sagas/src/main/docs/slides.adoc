@@ -74,6 +74,10 @@ image::2pc.png[background, size=70%]
 
 image::saga.png[background, size=70%]
 
+== Saga investigation example
+
+image::SagaModel.png[size=130%]
+
 == Saga implementation investigations
 
 [%step]
