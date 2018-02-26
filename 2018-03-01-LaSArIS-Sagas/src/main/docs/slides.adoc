@@ -55,15 +55,26 @@ image::fowlerMS.png[size=70%]
 
 [%step]
 * Two phase commit protocol
+  - O(n^2) messages
   - blocking
+  - coordinator - single point of failure
 
-* **Saga pattern**
+== Saga pattern
+[quote]
+____
+Hector Garcia-Molina and Kenneth Salem, Princeton Unversity, 1987
+____
+
+  - long lived transactions
   - compensations
   - eventual consistency
 
 [NOTE.speaker]
 --
-- 1987 - Hector Garcia-Molina and Kenneth Salem
+- saga is a long lived transaction that can be written as
+a sequence of transactions that can be interleaved
+- all local transaction in the sequence must complete sucessfully or
+compensating transations are ran to amend a partial execution
 --
 
 == !
