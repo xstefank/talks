@@ -5,7 +5,7 @@
 ifndef::imagesdir[:imagesdir: images]
 ifndef::sourcedir[:sourcedir: ../../main/java]
 
-= Distributed Saga Transactions
+= Distributed Transactions and the saga pattern
 
 == Master thesis
 
@@ -115,7 +115,7 @@ image::SagaModel.png[size=130%]
 
 mstefank@redhat.com
 
-https://twitter.com/xstefank[@xstefank]
+image:twitter-icon.png[twitter, width=5%] https://twitter.com/xstefank[@xstefank]
 
 http://bit.ly/2ADRVfd
 
