@@ -115,7 +115,8 @@ image::SagaModel.png[size=130%]
 
 mstefank@redhat.com
 
-image:twitter-icon.png[twitter, width=5%] https://twitter.com/xstefank[@xstefank]
+[.twitter]
+image:twitter-icon.png[twitter, width=3%] https://twitter.com/xstefank[@xstefank]
 
 http://bit.ly/2ADRVfd
 
