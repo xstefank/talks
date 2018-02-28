@@ -122,6 +122,10 @@ image::SagaModel.png[size=130%]
 * https://github.com/eventuate-tram/eventuate-tram-core[Eventuate Tram]
 * http://jbossts.blogspot.cz/2017/12/saga-implementations-comparison.html[blog post]
 
+== LRA executor motivation
+
+image::msa_calls.png[msa-calls]
+
 == LRA executor extension
 
 [%step]
@@ -142,6 +146,6 @@ mstefank@redhat.com
 [.twitter]
 image:twitter-icon.png[twitter, width=3%] https://twitter.com/xstefank[@xstefank]
 
-http://bit.ly/2ADRVfd
+http://www.slideshare.net
 
 
