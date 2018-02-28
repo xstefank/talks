@@ -82,7 +82,7 @@ compensating transations are ran to amend a partial execution
 * 2PC - T
 * Saga
   - success - T~1~, T~2~, T~3~, ..., T~n~
-  - compensation - T~1~, T~2~, ..., T~k~, C~k~, C~i-1~, ..., C~1~
+  - compensation - T~1~, T~2~, ..., T~k~, C~k~, C~k-1~, ..., C~1~
 
 [NOTE.speaker]
 --
@@ -91,7 +91,7 @@ compensating transations are ran to amend a partial execution
 
 == Example saga
 
-Sucess
+Success
 
 image:tripExample.png[trip]
 
@@ -101,13 +101,13 @@ Failure / Compensation
 
 image:tripExampleCompensation.png[tripCompensation]
 
-== !
+== Two phase commit protocol
 
-image::2pc.png[background, size=70%]
+image::2pc.png[size=70%]
 
-== !
+== Saga pattern
 
-image::saga.png[background, size=70%]
+image::saga.png[size=70%]
 
 == Saga investigation example
 
@@ -116,10 +116,10 @@ image::SagaModel.png[size=130%]
 == Saga implementation investigations
 
 [%step]
-* http://www.axonframework.org[Axon framework]
-* http://eventuate.io/[Eventuate.io]
-* https://github.com/jbosstm/microprofile-sandbox/blob/master/proposals/0009-LRA/README.md[Narayana LRA]
-* https://github.com/eventuate-tram/eventuate-tram-core[Eventuate Tram]
+* https://github.com/xstefank/axon-service[Axon framework]
+* https://github.com/xstefank/eventuate-service[Eventuate.io]
+* https://github.com/xstefank/lra-service[Narayana LRA]
+* https://github.com/xstefank/eventuate-sagas[Eventuate Tram]
 * http://jbossts.blogspot.cz/2017/12/saga-implementations-comparison.html[blog post]
 
 == LRA executor motivation
@@ -130,9 +130,9 @@ image::msa_calls.png[msa-calls]
 
 [%step]
 * proof of concept / prototype
-* LRA definition - asynchronous
+* LRA definition
+* asynchronicity and scalability
 * recovery capabilities
-* scalability
 * protocol/platform independent
 * https://github.com/xstefank/lra-executor-extension
 
