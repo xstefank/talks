@@ -77,6 +77,13 @@ a sequence of transactions that can be interleaved
 compensating transations are ran to amend a partial execution
 --
 
+== Saga executions
+
+* 2PC - T
+* Saga
+  - success - T~1~, T~2~, T~3~, ..., T~n~
+  - compensation - T~1~, T~2~, ..., T~k~, C~k~, C~i-1~, ..., C~1~
+
 == !
 
 image::2pc.png[background, size=70%]
