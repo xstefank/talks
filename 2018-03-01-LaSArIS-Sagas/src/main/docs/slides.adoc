@@ -84,6 +84,23 @@ compensating transations are ran to amend a partial execution
   - success - T~1~, T~2~, T~3~, ..., T~n~
   - compensation - T~1~, T~2~, ..., T~k~, C~k~, C~i-1~, ..., C~1~
 
+[NOTE.speaker]
+--
+- several failure modes - backwards recovery is the most common one
+--
+
+== Example saga
+
+Sucess
+
+image:tripExample.png[trip]
+
+{nbsp} +
+
+Failure / Compensation
+
+image:tripExampleCompensation.png[tripCompensation]
+
 == !
 
 image::2pc.png[background, size=70%]
