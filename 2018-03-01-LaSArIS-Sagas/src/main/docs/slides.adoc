@@ -136,6 +136,12 @@ image::msa_calls.png[msa-calls]
 * protocol/platform independent
 * https://github.com/xstefank/lra-executor-extension
 
+== Sagas
+
+- long lived transactions
+- distributed environment
+- compensations and failure recovery
+- atomicity vs availability
 
 == Questions
 
