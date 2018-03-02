@@ -107,7 +107,7 @@ image::2pc.png[size=70%]
 
 == Saga pattern
 
-image::saga.png[size=70%]
+image::saga.png[saga-pattern, size=70%]
 
 == Saga investigation example
 
@@ -152,6 +152,6 @@ mstefank@redhat.com
 [.twitter]
 image:twitter-icon.png[twitter, width=3%] https://twitter.com/xstefank[@xstefank]
 
-http://www.slideshare.net
+http://bit.ly/2t2cvCZ
 
 
