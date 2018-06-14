@@ -62,7 +62,7 @@ image::fowlerMS.png[size=70%]
 == Saga pattern
 [quote]
 ____
-Hector Garcia-Molina and Kenneth Salem, Princeton Unversity, 1987
+Hector Garcia-Molina and Kenneth Salem, Princeton University, 1987
 ____
 
   - long lived transactions
