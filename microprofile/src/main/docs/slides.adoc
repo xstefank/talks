@@ -15,6 +15,17 @@ ifndef::sourcedir[:sourcedir: ../../main/java]
 - image:twitter-icon.png[twitter, width=3%] https://twitter.com/xstefank[@xstefank]
 - mstefank@redhat.com
 
+== Microservices architecture
+
+image::fowlerMS.png[size=70%]
+
+[NOTE.speaker]
+--
+- developed, tested, scaled and deployed independently
+- public API / interface
+- faster and more stable releases
+--
+
 
 == Enterprise Java in past 10 years
 
@@ -24,7 +35,4 @@ ifndef::sourcedir[:sourcedir: ../../main/java]
   ** Java EE 6 - December 10, [.highlight-green]*2009*
   ** Java EE 7 - June 12, [.highlight-green]*2013*
   ** Java EE 8 - August 31, [.highlight-green]*2017*
-
-
-== Java EE 8 overview
-
+  
