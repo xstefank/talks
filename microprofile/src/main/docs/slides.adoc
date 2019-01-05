@@ -5,4 +5,26 @@
 ifndef::imagesdir[:imagesdir: images]
 ifndef::sourcedir[:sourcedir: ../../main/java]
 
-= Template
+= MicroProfile: microservices made easy
+
+
+== # whoami
+
+- Martin Štefanko
+- software engineer 3+ years, Red Hat
+- image:twitter-icon.png[twitter, width=3%] https://twitter.com/xstefank[@xstefank]
+- mstefank@redhat.com
+
+
+== Enterprise Java in past 10 years
+
+- Java EE (currently Jakarta EE)
+[%step]
+  ** Java EE 5 - May 11, [.highlight-green]*2006*
+  ** Java EE 6 - December 10, [.highlight-green]*2009*
+  ** Java EE 7 - June 12, [.highlight-green]*2013*
+  ** Java EE 8 - August 31, [.highlight-green]*2017*
+
+
+== Java EE 8 overview
+
