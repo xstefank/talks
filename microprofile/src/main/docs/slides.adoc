@@ -4,6 +4,7 @@
 :example-caption!:
 ifndef::imagesdir[:imagesdir: images]
 ifndef::sourcedir[:sourcedir: ../../main/java]
+:blank: {empty} +
 
 = MicroProfile: microservices made easy
 
@@ -38,6 +39,20 @@ https://martinfowler.com/articles/microservices.html
   ** Java EE 7 - June 12, [.highlight-green]*2013*
   ** Java EE 8 - August 31, [.highlight-green]*2017*
 
-{empty} +
+{blank}
   
 image::javaJakarta.png[javaJakarta]
+
+
+== MicroProfile
+
+- Eclipse MicroProfile is an [highlight-green]#open-source# community [highlight-green]#specification# 
+for Enterprise Java microservices
+- A community of [highlight-green]#individuals#, [highlight-green]#organizations#, and [highlight-green]#vendors# 
+collaborating within an open source (Eclipse) project to bring microservices to the Enterprise Java  community
+
+{blank}
+
+image::microprofile-logo.png[width=60%]
+
+
