@@ -4,5 +4,6 @@
 :example-caption!:
 ifndef::imagesdir[:imagesdir: images]
 ifndef::sourcedir[:sourcedir: ../../main/java]
+:blank: {empty} +
 
 = Template
