@@ -19,6 +19,8 @@ ifndef::sourcedir[:sourcedir: ../../main/java]
 
 image::fowlerMS.png[size=70%]
 
+https://martinfowler.com/articles/microservices.html
+
 [NOTE.speaker]
 --
 - developed, tested, scaled and deployed independently
@@ -35,4 +37,7 @@ image::fowlerMS.png[size=70%]
   ** Java EE 6 - December 10, [.highlight-green]*2009*
   ** Java EE 7 - June 12, [.highlight-green]*2013*
   ** Java EE 8 - August 31, [.highlight-green]*2017*
+
+{empty} +
   
+image::javaJakarta.png[javaJakarta]
