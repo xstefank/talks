@@ -63,3 +63,16 @@ image::microprofile-site.png[]
 
 [.lead]
 [highlight-green]#microprofile.io#
+
+[%notitle]
+== Microprofile vendors, contributors
+
+image::microprofile-vendors.png[]
+https://docs.google.com/presentation/d/1BYfVqnBIffh-QDIrPyromwc9YSwIbsawGUECSsrSQB0/edit#slide=id.g449bb72e03_23_15
+
+
+[%notitle]
+== MP impls
+
+image::microprofile-impls.png[]
+https://docs.google.com/presentation/d/1BYfVqnBIffh-QDIrPyromwc9YSwIbsawGUECSsrSQB0/edit#slide=id.g449bb72e03_23_33
