@@ -56,3 +56,10 @@ collaborating within an open source (Eclipse) project to bring microservices to 
 image::microprofile-logo.png[width=60%]
 
 
+[%notitle]
+== MicroProfile site
+
+image::microprofile-site.png[]
+
+[.lead]
+[highlight-green]#microprofile.io#
