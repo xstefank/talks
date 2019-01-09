@@ -30,7 +30,7 @@ https://martinfowler.com/articles/microservices.html
 --
 
 
-== Enterprise Java in past 10 years
+== Enterprise Java in past 20 years
 
 - Java EE (currently Jakarta EE)
 [%step]
@@ -55,6 +55,10 @@ collaborating within an open source (Eclipse) project to bring microservices to 
 
 image::microprofile-logo.png[width=60%]
 
+[NOTE.speaker]
+--
+- eclipse - over 350 projects
+--
 
 [%notitle]
 == MicroProfile site
