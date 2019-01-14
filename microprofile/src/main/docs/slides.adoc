@@ -66,6 +66,15 @@ image::microprofile-logo.png[width=60%]
 image::mp21.png[]
 
 
+== + under discussion
+- Long Running Actions (LRA)
+- Reactive Streams operators
+- Reactive messaging
+- Service mesh
+- Concurrency
+- GraphQL
+
+
 [%notitle]
 == Microprofile vendors, contributors
 
