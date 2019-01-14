@@ -101,6 +101,11 @@ image::microprofile-impls.png[]
   ** MP 2.1 - [.highlight-red]*Oct* [.highlight-green]*2018*
 
 [%notitle]
+== MicroProfile 2.2
+
+image::mp22milestone.png[]
+
+[%notitle]
 == MicroProfile site
 
 image::microprofile-site.png[]
