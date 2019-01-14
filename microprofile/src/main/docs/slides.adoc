@@ -87,6 +87,19 @@ image::microprofile-vendors.png[]
 image::microprofile-impls.png[]
 
 
+== Differences from Java EE
+
+[%step]
+- open source and open community
+- code first approach
+- 3 releases per year (Feb, Jun, Oct)
+  ** MP 1.0 - Sep [.highlight-green]*2016*
+  ** MP 1.1 - Aug [.highlight-green]*2017*
+  ** MP 1.2 - [.highlight-red]*Sep* [.highlight-green]*2017*
+  ** MP 1.3 - [.highlight-red]*Jan* [.highlight-green]*2018*
+  ** MP 1.4 / MP 2.0 - [.highlight-red]*Jun* [.highlight-green]*2018*
+  ** MP 2.1 - [.highlight-red]*Oct* [.highlight-green]*2018*
+
 [%notitle]
 == MicroProfile site
 
