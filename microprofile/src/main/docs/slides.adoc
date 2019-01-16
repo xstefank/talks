@@ -113,4 +113,9 @@ image::microprofile-site.png[]
 [quote]
 [highlight-green]#microprofile.io#
 
+[%notitle],,
+== spec by spec
+
+image::mp21javaEEselect.png[]
+
 
