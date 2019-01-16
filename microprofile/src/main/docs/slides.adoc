@@ -119,3 +119,10 @@ image::microprofile-site.png[]
 image::mp21javaEEselect.png[]
 
 
+== JAX-RS
+
+image::appPathSample.png[]
+
+
+
+
