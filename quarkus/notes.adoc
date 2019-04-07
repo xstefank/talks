@@ -1,0 +1,14 @@
+= Steps
+
+== First demo app -- plugin, live reload, reactive
+
+* Create new project
+
+`mvn io.quarkus:quarkus-maven-plugin:0.12.0:create`
+
+* live reload 
+
+** change hello message
+
+** add config property for message
+// add front end reload also? 
