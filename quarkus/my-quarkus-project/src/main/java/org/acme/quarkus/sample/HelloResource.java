@@ -12,12 +12,12 @@ import javax.ws.rs.core.MediaType;
 public class HelloResource {
 
     @Inject
-    @ConfigProperty(name = "message")
-    String message;
+    @ConfigProperty(name = "whatever")
+    String whatever;
     
     @GET
     @Produces(MediaType.TEXT_PLAIN)
     public String hello() {
-        return message;
+        return whatever;
     }
 }
