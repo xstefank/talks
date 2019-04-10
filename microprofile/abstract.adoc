@@ -1,0 +1,4 @@
+= MicroProfile: microservices made easy
+
+Eclipse MicroProfile is an initiative that defines an open-source community specifications for Java microservices. Because of its active development, large community, frequent releases and the ease of adaptation, it is becoming a reasonable way of structuring enterprise ready microservices applications. In this session, we will introduce MicroProfile, specification by specification, on the practical examples and describe where we stand, where we are heading and how you can help to define how Java microservices will look like in near future.
+
