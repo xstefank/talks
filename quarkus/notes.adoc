@@ -12,3 +12,32 @@
 
 ** add config property for message
 // add front end reload also? 
+
+* list extensions
+`mvn quarkus:list-extensions`
+
+** add extension JSON-B
+`mvn quarkus:add-extension -Dextensions="quarkus-resteasy-jsonb"`
+
+== Openshift deployment
+
+* login
+`oc login`
+
+* new project
+`oc new-project quarkus --display-name="Sample Quarkus App"`
+
+* new build
+`oc new-build quay.io/redhat/ubi-quarkus-native-runner --binary --name=quarkus-quickstart -l app=quarkus-quickstart`
+
+`oc start-build quarkus-quickstart --from-file=target/getting-started-1.0-SNAPSHOT-runner --follow`
+
+* new app
+`oc new-app quarkus-quickstart`
+
+`oc expose service quarkus-quickstart`
+
+`oc rollout status -w dc/quarkus-quickstart`
+
+* scale up
+`oc scale --replicas=10 dc/quarkus-quickstart`

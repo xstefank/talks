@@ -1,5 +1,6 @@
 package org.acme.quarkus.sample;
 
+import org.acme.quarkus.sample.model.Avenger;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 
 import javax.inject.Inject;
@@ -12,12 +13,19 @@ import javax.ws.rs.core.MediaType;
 public class HelloResource {
 
     @Inject
-    @ConfigProperty(name = "whatever")
-    String whatever;
-    
+    @ConfigProperty(name = "message")
+    String message;
+
     @GET
     @Produces(MediaType.TEXT_PLAIN)
     public String hello() {
-        return whatever;
+        return message;
+    }
+    
+    @GET
+    @Path("json")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Avenger getJson() {
+        return new Avenger("Iron man", "Tony Stark", false, true);
     }
 }
