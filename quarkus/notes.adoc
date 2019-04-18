@@ -13,6 +13,10 @@
 ** add config property for message
 // add front end reload also? 
 
+** refresh in browser or curl
+
+* run test, fix test
+
 * list extensions
 `mvn quarkus:list-extensions`
 
@@ -41,3 +45,20 @@
 
 * scale up
 `oc scale --replicas=10 dc/quarkus-quickstart`
+
+
+
+
+
+
+== Additional stuff
+----
+@Id
+@SequenceGenerator(
+          name = "personSequence",
+          sequenceName = "person_id_seq",
+          allocationSize = 1,
+          initialValue = 4)
+@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "personSequence")
+public Integer id;
+----
