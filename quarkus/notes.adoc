@@ -20,8 +20,23 @@
 * list extensions
 `mvn quarkus:list-extensions`
 
-** add extension JSON-B
+** add extensions JSON-B, reactive streams operators
 `mvn quarkus:add-extension -Dextensions="quarkus-resteasy-jsonb"`
+
+** add Planet JSON, name, diameter, climate
+
+* reactive
+
+** add reactive streams operators
+`mvn quarkus:add-extension -Dextensions="io.quarkus:quarkus-smallrye-reactive-streams-operators"`
+
+** add endpoint with ReactiveStreams.of(message)
+
+** add endpoint with supplyAsync
+
+** add PublisherBean with SSE
+
+
 
 == Openshift deployment
 
