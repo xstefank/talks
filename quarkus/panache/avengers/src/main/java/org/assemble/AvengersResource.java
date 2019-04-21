@@ -48,7 +48,7 @@ public class AvengersResource {
     @GET
     @Path("/unsnapped")
     public List<Avenger> findUnsnapped() {
-        return Avenger.list("snapped", false);
+        return Avenger.findUnsnapped();
     }
 
     @GET
@@ -61,5 +61,14 @@ public class AvengersResource {
     @Path("/ordered")
     public List<Avenger> ordered() {
         return Avenger.list("snapped", Sort.by("real_name"), false);
+    }
+    
+    @GET
+    @Path("/space")
+    public List<Avenger> findWithSpace() {
+        return Avenger.<Avenger>streamAll()
+            .filter(a -> a.name.contains(" "))
+            .limit(1)
+            .collect(Collectors.toList());
     }
 }

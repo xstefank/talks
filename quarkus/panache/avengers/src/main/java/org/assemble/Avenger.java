@@ -4,6 +4,7 @@ import io.quarkus.hibernate.orm.panache.PanacheEntity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import java.util.List;
 
 @Entity
 public class Avenger extends PanacheEntity {
@@ -21,5 +22,9 @@ public class Avenger extends PanacheEntity {
 
     public void setCivilName(String civilName) {
         this.civilName = civilName.toLowerCase();
+    }
+    
+    public static List<Avenger> findUnsnapped() {
+        return list("snapped", false);
     }
 }
