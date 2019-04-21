@@ -62,6 +62,30 @@
 * scale up
 `oc scale --replicas=10 dc/quarkus-quickstart`
 
+== Panache
+
+* create new project 
+
+* add extensions
+`mvn quarkus:add-extension -Dextensions="io.quarkus:quarkus-resteasy-jsonb,io.quarkus:quarkus-hibernate-orm-panache,io.quarkus:quarkus-jdbc-postgresql"`
+
+* show default endpoint is working
+
+* add connection properties
+----
+quarkus.datasource.url=jdbc:postgresql://localhost:5432/avenger
+quarkus.datasource.driver=org.postgresql.Driver
+quarkus.datasource.username=developer
+quarkus.datasource.password=developer
+quarkus.hibernate-orm.database.generation=drop-and-create
+----
+
+* add Avenger entity (name, civilName, snapped)
+
+* rewrite default endpoint to listAll()
+
+* add post method for /avenger taking JsonObject
+
 
 
 
