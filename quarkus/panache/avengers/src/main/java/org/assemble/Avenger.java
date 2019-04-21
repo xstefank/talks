@@ -10,8 +10,16 @@ public class Avenger extends PanacheEntity {
     
     public String name;
     
-    @Column(name = "real_life_name")
+    @Column(name = "real_name")
     public String civilName;
-    public boolean snapped;
     
+    public boolean snapped;
+
+    public String getCivilName() {
+        return civilName.toUpperCase();
+    }
+
+    public void setCivilName(String civilName) {
+        this.civilName = civilName.toLowerCase();
+    }
 }

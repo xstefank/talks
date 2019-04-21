@@ -86,7 +86,27 @@ quarkus.hibernate-orm.database.generation=drop-and-create
 
 * add post method for /avenger taking JsonObject
 
+* add import.sql to resources folder
+----
+INSERT INTO avenger(id, name, real_name, snapped) VALUES (nextval('hibernate_sequence'), 'Iron man', 'Tony Stark', FALSE)
+INSERT INTO avenger(id, name, real_name, snapped) VALUES (nextval('hibernate_sequence'), 'Captain America', 'Steve Rogers', FALSE)
+INSERT INTO avenger(id, name, real_name, snapped) VALUES (nextval('hibernate_sequence'), 'Spider-man', 'Peter Parker', TRUE)
+----
 
+* queries - add endpoint for
+
+** find by id at \{id}
+*** show setter getter in DB
+
+** find by snapped at \unsnapped
+
+** search at /search/{search}
+`return Avenger.list("name like :search", Parameters.with("search", "%" + search + "%"));`
+
+** order at \ordered
+`return Avenger.list("order by real_name");`
+`return Avenger.listAll(Sort.by("real_name"));`
+``
 
 
 
