@@ -117,6 +117,52 @@ return Avenger.<Avenger>streamAll()
             .collect(Collectors.toList());
 ----
 
+* add datatable
+** add endpoint
+----
+@GET
+    @Path("/datatable")
+    @Produces(MediaType.APPLICATION_JSON)
+    public DataTable datatable(
+        @QueryParam(value = "draw") int draw,
+        @QueryParam(value = "start") int start,
+        @QueryParam(value = "length") int length,
+        @QueryParam(value = "search[value]") String searchVal) {
+
+    }
+----
+
+** add result json object
+----
+public class DataTable {
+
+    public long draw;
+    public long recordsTotal;
+    public long recordsFiltered;
+    public List<Avenger> data;
+    public String error;
+
+----
+
+** implement resource method
+
+----
+DataTable result = new DataTable();
+result.setDraw(draw);
+
+if (searchVal != null && !searchVal.isEmpty()) {
+            filteredAvengers = Avenger.searchByName(searchVal);
+        } else {
+            filteredAvengers = Avenger.findAll();
+        }
+----
+
+where 
+
+----
+return Avenger.find("name like :search or real_name like :search", 
+            Parameters.with("search", "%" + searchValue + "%"));
+----
 
 
 

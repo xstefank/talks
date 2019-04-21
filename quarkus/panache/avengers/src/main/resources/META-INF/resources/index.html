@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>avengers - 1.0-SNAPSHOT</title>
+    <title>Avengers List</title>
     <style>
         h1, h2, h3, h4, h5, h6 {
             margin-bottom: 0.5rem;
@@ -96,35 +96,41 @@
         }
 
     </style>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+
+    <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
 </head>
 <body>
 
 <div class="banner lead">
-    Your new Cloud-Native application is ready!
+    Quarkus Example with Panache
 </div>
 
 <div class="container">
     <div class="left-column">
-        <p class="lead"> Congratulations, you have created a new Quarkus application.</p>
+        <p class="lead">Avengers assemble</p>
+        <div class="table">
+            <table style="width: 100%;" id="queuetable" class="table table-striped table-bordered table-sm table-condensed">
+                <thead class="thead-dark">
+                <tr>
+                    <th>Name</th>
+                    <th>Real name</th>
+                    <th>Snapped</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Dummy avenger</td>
+                    <td>I am groot</td>
+                    <td>false</td>
+                </tr>
+                </tbody>
 
-        <h2>Why do you see this?</h2>
+            </table>
 
-        <p>This page is served by Quarkus. The source is in
-            <code>src/main/resources/META-INF/resources/index.html</code>.</p>
-
-        <h2>What can I do from here?</h2>
-
-        <p>If not already done, run the application in <em>dev mode</em> using: <code>mvn compile quarkus:dev</code>.
-        </p>
-        <ul>
-            <li>Add REST resources, Servlets, functions and other services in <code>src/main/java</code>.</li>
-            <li>Your static assets are located in <code>src/main/resources/META-INF/resources</code>.</li>
-            <li>Configure your application in <code>src/main/resources/application.properties</code>.
-            </li>
-        </ul>
-
-        <h2>How do I get rid of this page?</h2>
-        <p>Just delete the <code>src/main/resources/META-INF/resources/index.html</code> file.</p>
+        </div>
     </div>
     <div class="right-column">
         <div class="right-section">
@@ -147,6 +153,35 @@
     </div>
 </div>
 
+<script type="application/javascript">
+
+    // initialize datatable
+    $('#queuetable').DataTable({
+      serverSide: true,
+      ajax: '/avenger/datatable',
+      language: {
+        search: ""
+      },
+      data: [],
+      lengthChange: false,
+      pageLength: 10,
+      columns: [
+        {
+          name: 'name',
+          data: 'name'
+        },
+        {
+          name: 'Civil name',
+          data: 'civilName'
+        },
+        {
+          name: 'snapped',
+          data: 'snapped'
+        }
+      ]
+    });
+
+</script>
 
 </body>
 </html>
