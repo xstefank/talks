@@ -88,9 +88,12 @@ quarkus.hibernate-orm.database.generation=drop-and-create
 
 * add import.sql to resources folder
 ----
-INSERT INTO avenger(id, name, real_name, snapped) VALUES (nextval('hibernate_sequence'), 'Iron man', 'Tony Stark', FALSE)
+INSERT INTO avenger(id, name, real_name, snapped) VALUES (nextval('hibernate_sequence'), 'Iron Man', 'Tony Stark', FALSE)
 INSERT INTO avenger(id, name, real_name, snapped) VALUES (nextval('hibernate_sequence'), 'Captain America', 'Steve Rogers', FALSE)
-INSERT INTO avenger(id, name, real_name, snapped) VALUES (nextval('hibernate_sequence'), 'Spider-man', 'Peter Parker', TRUE)
+INSERT INTO avenger(id, name, real_name, snapped) VALUES (nextval('hibernate_sequence'), 'Black Widow', 'Natasha Romanoff', FALSE)
+INSERT INTO avenger(id, name, real_name, snapped) VALUES (nextval('hibernate_sequence'), 'Spider-Man', 'Peter Parker', TRUE)
+INSERT INTO avenger(id, name, real_name, snapped) VALUES (nextval('hibernate_sequence'), 'Hulk', 'Bruce Banner', FALSE)
+INSERT INTO avenger(id, name, real_name, snapped) VALUES (nextval('hibernate_sequence'), 'Groot', 'I am Groot!', TRUE)
 ----
 
 * queries - add endpoint for
@@ -162,6 +165,45 @@ return Avenger.find("name like :search or real_name like :search",
             Parameters.with("search", "%" + searchValue + "%"));
 ----
 
+paging
+----
+int page_num = start / length;
+filteredAvengers.page(page_num, length);
+----
+
+rest
+----
+result.setRecordsFiltered(filteredAvengers.count());
+result.setData(filteredAvengers.list());
+result.setRecordsTotal(Avenger.count());
+
+return result;
+
+----
+
+* test endpoint
+`http ":8080/avenger/datatable?draw=1&start=0&length=10&search[value]=e"`
+
+* add fake avengers
+** add avenger name generator
+** add startup observer
+----
+@Transactional
+    public void observeStart(@Observes StartupEvent event) {
+        for (int i = 0; i < 10000; i++) {
+            String name = AvengerNameGenerator.generateName();
+
+            Avenger avenger = new Avenger();
+            avenger.name = name;
+            avenger.civilName = "Fake";
+            avenger.snapped = true;
+
+            avenger.persist();
+        }
+    }
+----
+
+* add html
 
 
 == Additional stuff
