@@ -3,6 +3,7 @@ package org.assemble;
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 import io.quarkus.hibernate.orm.panache.PanacheQuery;
 import io.quarkus.panache.common.Parameters;
+import io.quarkus.panache.common.Sort;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -24,6 +25,11 @@ public class Avenger extends PanacheEntity {
 
     public static PanacheQuery<Avenger> searchByName(String searchValue) {
         return Avenger.find("name like :search or real_name like :search", 
+            Parameters.with("search", "%" + searchValue + "%"));
+    }
+
+    public static PanacheQuery<Avenger> searchByName(String searchValue, Sort sort) {
+        return Avenger.find("name like :search or real_name like :search", sort, 
             Parameters.with("search", "%" + searchValue + "%"));
     }
 

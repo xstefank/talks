@@ -124,12 +124,10 @@ return Avenger.<Avenger>streamAll()
     @Path("/datatable")
     @Produces(MediaType.APPLICATION_JSON)
     public DataTable datatable(
-        @QueryParam(value = "draw") int draw,
-        @QueryParam(value = "start") int start,
-        @QueryParam(value = "length") int length,
-        @QueryParam(value = "search[value]") String searchVal) {
-
-    }
+        @QueryParam("draw") int draw,
+        @QueryParam("start") int start,
+        @QueryParam("length") int length,
+        @QueryParam("search[value]") String searchVal) {
 ----
 
 ** add result json object

@@ -36,7 +36,7 @@ public class AvengersResource {
         avenger.name = json.getString("name");
         avenger.civilName = json.getString("civilName");
         avenger.snapped = json.getBoolean("snapped");
-        
+
         avenger.persist();
 
         return avenger;
@@ -65,7 +65,7 @@ public class AvengersResource {
     public List<Avenger> ordered() {
         return Avenger.list("snapped", Sort.by("real_name"), false);
     }
-    
+
     @GET
     @Path("/space")
     public List<Avenger> findWithSpace() {
@@ -79,25 +79,47 @@ public class AvengersResource {
     @Path("/datatable")
     @Produces(MediaType.APPLICATION_JSON)
     public DataTable datatable(
-        @QueryParam(value = "draw") int draw,
-        @QueryParam(value = "start") int start,
-        @QueryParam(value = "length") int length,
-        @QueryParam(value = "search[value]") String searchVal) {
+        @QueryParam("draw") int draw,
+        @QueryParam("start") int start,
+        @QueryParam("length") int length,
+        @QueryParam("search[value]") String searchVal,
+        @QueryParam("order[0][column]") int orderColumn,
+        @QueryParam("order[0][dir]") String orderDirection) {
 
         DataTable result = new DataTable();
         result.setDraw(draw);
 
+        String columnName;
+
+        switch (orderColumn) {
+            case 0:
+                columnName = "name";
+                break;
+            case 1:
+                columnName = "real_name";
+                break;
+            case 2:
+                columnName = "snapped";
+                break;
+            default:
+                columnName = null;
+        }
+
+        Sort.Direction dir = orderDirection.equals("asc") ? Sort.Direction.Ascending : Sort.Direction.Descending;
+        Sort sort = columnName != null ? Sort.by(columnName, dir) : null;
+        
+
         PanacheQuery<Avenger> filteredAvengers;
-         
+
         if (searchVal != null && !searchVal.isEmpty()) {
-            filteredAvengers = Avenger.searchByName(searchVal);
+            filteredAvengers = sort == null ? Avenger.searchByName(searchVal) : Avenger.searchByName(searchVal, sort);
         } else {
-            filteredAvengers = Avenger.findAll();
+            filteredAvengers = sort == null ? Avenger.findAll(): Avenger.findAll(sort);
         }
 
         int page_num = start / length;
         filteredAvengers.page(page_num, length);
-        
+
         result.setRecordsFiltered(filteredAvengers.count());
         result.setData(filteredAvengers.list());
         result.setRecordsTotal(Avenger.count());
