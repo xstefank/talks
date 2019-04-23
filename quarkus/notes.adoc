@@ -82,6 +82,8 @@ quarkus.hibernate-orm.database.generation=drop-and-create
 
 * add Avenger entity (name, civilName, snapped)
 
+* add @Column annotation to change civilName to real_name
+
 * rewrite default endpoint to listAll()
 
 * add post method for /avenger taking JsonObject
@@ -137,11 +139,11 @@ return Avenger.<Avenger>streamAll()
 ----
 public class DataTable {
 
-    public long draw;
-    public long recordsTotal;
-    public long recordsFiltered;
-    public List<Avenger> data;
-    public String error;
+    private long draw;
+    private long recordsTotal;
+    private long recordsFiltered;
+    private List<Avenger> data;
+    private String error;
 
 ----
 

@@ -6,11 +6,11 @@ import java.util.List;
 
 public class DataTable {
 
-    public long draw;
-    public long recordsTotal;
-    public long recordsFiltered;
-    public List<Avenger> data;
-    public String error;
+    private long draw;
+    private long recordsTotal;
+    private long recordsFiltered;
+    private List<Avenger> data;
+    private String error;
 
     public long getDraw() {
         return draw;
