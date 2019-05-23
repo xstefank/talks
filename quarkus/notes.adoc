@@ -219,3 +219,73 @@ return result;
 @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "personSequence")
 public Integer id;
 ----
+
+* add io.quarkus:quarkus-smallrye-reactive-messaging extension
+
+----
+@Inject
+    @Stream("fake-avengers")
+    Emitter<String> fakeAvengers;
+
+@POST
+    @Path("addFake")
+    public String createFakeAvenger() {
+        String name = AvengerNameGenerator.generateName();
+        
+        CompletableFuture.supplyAsync(() -> {
+            fakeAvengers.send(name);
+            
+            return name;
+        }).whenComplete((s, e) -> System.out.println(s));
+
+        return name;
+    }
+----
+
+AvengerProcessor
+
+----
+@Inject
+    AvengerGenerator avengerGenerator;
+    
+    @Incoming("fake-avengers")
+    @Outgoing("processed-avengers")
+    @Broadcast
+    @Transactional
+    public String process(String avengerName) {
+        Avenger avenger = avengerGenerator.createFakeAvenger("Mighty " + avengerName);
+        
+        avenger.persist();
+
+        return avenger.name;
+    }
+----
+
+basic publisher 
+----
+@Inject
+    @Stream("processed-avengers")
+    Publisher<String> processedAvengers;
+    
+    @GET
+    @Path("stream")
+    @Produces(MediaType.SERVER_SENT_EVENTS)
+    public Publisher<String> publisher() {
+        return processedAvengers;
+    }
+----
+
+----
+@Inject
+    DataTableSocket dataTableSocket;
+    
+    @Incoming("processed-avengers")
+    public void dataTableUpdate(String avengerName) {
+        dataTableSocket.broadcast(avengerName);
+    }
+
+    @Incoming("processed-avengers")
+    public void avengerProcessor(String avengerName) {
+        System.out.println("Processed " + avengerName);
+    }
+----
