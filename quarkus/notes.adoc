@@ -245,7 +245,7 @@ public Integer id;
 AvengerProcessor
 
 ----
-@Inject
+	@Inject
     AvengerGenerator avengerGenerator;
     
     @Incoming("fake-avengers")
@@ -263,7 +263,7 @@ AvengerProcessor
 
 basic publisher 
 ----
-@Inject
+    @Inject
     @Stream("processed-avengers")
     Publisher<String> processedAvengers;
     
@@ -289,3 +289,51 @@ basic publisher
         System.out.println("Processed " + avengerName);
     }
 ----
+
+After above is working successfully
+
+change type of messages to Message<String> and Message<Avenger>
+
+----
+public Message<Avenger> process(Message<String> avengerName) {
+        Avenger avenger = avengerGenerator.createFakeAvenger("Mighty " + avengerName.getPayload());
+        
+        avenger.persist();
+
+        return Message.of(avenger);
+    }
+----
+
+----
+@Incoming("processed-avengers")
+    public CompletionStage<Message<Void>> dataTableUpdate(Message<Avenger> avenger) {
+        return CompletableFuture.runAsync(() -> dataTableSocket.broadcast(avenger.getPayload().name))
+            .thenApply(Message::of);
+    }
+----
+
+Add kafka connector
+
+copy docker-compose.yaml for kafka
+
+mvn quarkus:add-extension -Dextensions="quarkus-smallrye-reactive-messaging-kafka"
+
+copy properties from sample project 
+
+----
+smallrye.messaging.sink.fake-avengers.type=io.smallrye.reactive.messaging.kafka.Kafka
+smallrye.messaging.sink.fake-avengers.topic=fake-avengers
+smallrye.messaging.sink.fake-avengers.bootstrap.servers=localhost:9092
+smallrye.messaging.sink.fake-avengers.key.serializer=org.apache.kafka.common.serialization.StringSerializer
+smallrye.messaging.sink.fake-avengers.value.serializer=org.apache.kafka.common.serialization.StringSerializer
+smallrye.messaging.sink.fake-avengers.acks=1
+        
+smallrye.messaging.source.fake-avengers-kafka.type=io.smallrye.reactive.messaging.kafka.Kafka
+smallrye.messaging.source.fake-avengers-kafka.topic=fake-avengers
+smallrye.messaging.source.fake-avengers-kafka.bootstrap.servers=localhost:9092
+smallrye.messaging.source.fake-avengers-kafka.key.deserializer=org.apache.kafka.common.serializati`on.StringDeserializer
+smallrye.messaging.source.fake-avengers-kafka.value.deserializer=org.apache.kafka.common.serialization.StringDeserializer
+smallrye.messaging.source.fake-avengers-kafka.group.id=my-group-id
+----
+
+
