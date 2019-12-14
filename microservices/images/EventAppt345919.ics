@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+PRODID:-//Microsoft Corporation//Outlook 9.0 MIMEDIR//EN
+VERSION:2.0
+BEGIN:VEVENT
+DTSTART:20191121T170000Z
+DTEND:20191121T173000Z
+LOCATION:Serverless Kafka on Kubernetes
+DESCRIPTION:Serverless Kafka on Kubernetes - Serverless Kafka on Kubernetes\n\nhttps:/
+ /onlinexperiences.com/Launch/Event.htm?ShowKey=77014
+SUMMARY:Serverless Kafka on Kubernetes
+PRIORITY:3
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+END:VCALENDAR
