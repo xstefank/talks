@@ -1,0 +1,4 @@
+= BIO
+
+a software engineer working mainly on Red Hat middleware runtimes technologies like WildFly / JBoss EAP application servers, Thorntail, Quarkus and individual components that are included in these projects like RESTEasy, Weld or Hibernate. He is also actively participating in MicroProfile (MicroProfile committer) and Java / Jakarta EE specifications.
+
