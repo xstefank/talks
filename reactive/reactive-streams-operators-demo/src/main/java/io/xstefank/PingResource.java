@@ -1,5 +1,6 @@
 package io.xstefank;
 
+import io.reactivex.Flowable;
 import org.eclipse.microprofile.reactive.streams.operators.ReactiveStreams;
 import org.reactivestreams.Processor;
 import org.reactivestreams.Publisher;
@@ -8,9 +9,9 @@ import org.reactivestreams.Subscription;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
-import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.CompletionStage;
+import java.util.concurrent.TimeUnit;
 
 @Path("/ping")
 public class PingResource {
@@ -31,59 +32,51 @@ public class PingResource {
     @GET
     @Path("rs2")
     public void getRs2() {
-        ReactiveStreams.fromPublisher(createPublisher())
-            .via(createProcessor())
-            .to(createSubscriber())
+        ReactiveStreams.fromPublisher(publisher())
+            .via(processor())
+            .to(subscriber())
             .run();
     }
 
-    private Subscriber<String> createSubscriber() {
-        return ReactiveStreams.<String>builder()
-            .to(new Subscriber<String>() {
-                private Subscription subscription;
-
-                @Override
-                public void onSubscribe(Subscription subscription) {
-                    this.subscription = subscription;
-                    System.out.println("PingResource.onSubscribe");
-                    subscription.request(1);
-                }
-
-                @Override
-                public void onNext(String s) {
-                    System.out.println("s = " + s);
-                    subscription.request(1);
-                }
-
-                @Override
-                public void onError(Throwable throwable) {
-                    System.out.println("throwable = " + throwable);
-                }
-
-                @Override
-                public void onComplete() {
-                    System.out.println("PingResource.onComplete");
-                }
-            })
-            .build();
-    }
-
-    private Publisher<String> createPublisher() {
-        List<String> strings = Arrays.asList("Luke", "Leia", "Han");
-
-        return ReactiveStreams.fromIterable(strings)
-            .map(String::toUpperCase)
-            .buildRs();
-            
-    }
-    
-    private Processor<String, String> createProcessor() {
-        return ReactiveStreams.<String>builder()
-            .filter(s -> s.startsWith("L"))
-            .map(s -> s.substring(0, 3))
+    private Processor<Long, String> processor() {
+        return ReactiveStreams.<Long>builder()
+            .filter(aLong -> aLong % 2 == 0)
+            .map(aLong -> aLong + " iteration")
             .buildRs();
     }
-    
-    
-    
+
+    private Subscriber<? super String> subscriber() {
+        return new Subscriber<String>() {
+            private Subscription subscribtion;
+
+            @Override
+            public void onSubscribe(Subscription s) {
+                this.subscribtion = s;
+                subscribtion.request(1);
+            }
+
+            @Override
+            public void onNext(String s) {
+                System.out.println("s = " + s);
+                subscribtion.request(1);
+            }
+
+            @Override
+            public void onError(Throwable t) {
+                System.out.println("t = " + t);
+            }
+
+            @Override
+            public void onComplete() {
+                System.out.println("PingResource.onComplete");
+            }
+        };
+    }
+
+    private Publisher<Long> publisher() {
+        return Flowable.interval(500, TimeUnit.MILLISECONDS)
+//            .map(aLong -> aLong / 0)
+            .limit(10);
+    }
+
 }
