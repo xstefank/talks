@@ -1,0 +1,145 @@
+Beverage
+
+--    private State preparationState;
+    
+    public enum State {
+        IN_QUEUE,
+        READY
+    }
+
+-- this.preparationState = preparationState;
+
+-- 
+    public State getPreparationState() {
+        return preparationState;
+    }
+
+    public void setPreparationState(State preparationState) {
+        this.preparationState = preparationState;
+    }
+
+-------------------------------------------------------------------------
+BaristaResource
+
+-- @ApplicationScoped
+-- 
+    @Incoming("orders")
+    @Outgoing("queue")
+-- 
+        return new Beverage(order, name, Beverage.State.READY);
+
+
+------------------------------------------------------------------------
+OrderDeserializer
+
+package me.escoffier.quarkus.coffeeshop.codecs;
+
+import io.quarkus.kafka.client.serialization.JsonbDeserializer;
+import me.escoffier.quarkus.coffeeshop.Order;
+
+public class OrderDeserializer extends JsonbDeserializer<Order> {
+    public OrderDeserializer() {
+        super(Order.class);
+    }
+}
+
+
+------------------------------------------------------------------------
+
+
+quarkus.http.port=8081
+
+# orders topic
+mp.messaging.incoming.orders.connector=smallrye-kafka
+mp.messaging.incoming.orders.value.deserializer=me.escoffier.quarkus.coffeeshop.codecs.OrderDeserializer
+mp.messaging.incoming.orders.auto.offset.reset=earliest
+mp.messaging.incoming.orders.group.id=baristas
+
+# queue topic
+mp.messaging.outgoing.queue.connector=smallrye-kafka
+mp.messaging.outgoing.queue.value.serializer=io.quarkus.kafka.client.serialization.JsonbSerializer
+
+
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+CoffeeShopResource
+
+--
+
+    @Inject
+    @Channel("queue")
+    Emitter<Beverage> queue;
+    
+    @Inject
+    @Channel("orders")
+    Emitter<Order> orders;
+    
+    @POST
+    @Path("/messaging")
+    public Order messaging(Order order) {
+        order.setOrderId(getId());
+        
+        queue.send(Beverage.queued(order));
+        orders.send(order);
+        
+        return order;
+    }
+
+
+---------------------------------------------------------------
+BeverageDeserializer
+
+package me.escoffier.quarkus.coffeeshop.codecs;
+
+import io.quarkus.kafka.client.serialization.JsonbDeserializer;
+import me.escoffier.quarkus.coffeeshop.model.Beverage;
+
+public class BeverageDeserializer extends JsonbDeserializer<Beverage> {
+    public BeverageDeserializer() {
+        super(Beverage.class);
+    }
+}
+
+
+--------------------------------------------------------------
+BoardResource
+
+@Path("/queue")
+public class BoardResource {
+    
+    @Inject
+    @Channel("beverages")
+    Flowable<Beverage> queue;
+
+    private Jsonb json = JsonbBuilder.create();
+
+    @GET
+    @Produces(MediaType.SERVER_SENT_EVENTS)
+    public Publisher<String> getQueue() {
+        return queue.map(o -> json.toJson(o));
+    }
+}
+
+
+--------------------------------------------------------------------
+
+quarkus.http.port=8080
+
+## HTTP Client
+me.escoffier.quarkus.coffeeshop.http.BaristaService/mp-rest/url=http://localhost:8081
+
+# Orders topic
+mp.messaging.outgoing.orders.connector=smallrye-kafka
+mp.messaging.outgoing.orders.value.serializer=io.quarkus.kafka.client.serialization.JsonbSerializer
+
+# Queue topic
+mp.messaging.outgoing.queue.connector=smallrye-kafka
+mp.messaging.outgoing.queue.value.serializer=io.quarkus.kafka.client.serialization.JsonbSerializer
+mp.messaging.outgoing.queue.broadcast=true
+
+# Beverages topic
+mp.messaging.incoming.beverages.connector=smallrye-kafka
+mp.messaging.incoming.beverages.value.deserializer=me.escoffier.quarkus.coffeeshop.codecs.BeverageDeserializer
+mp.messaging.incoming.beverages.topic=queue
+mp.messaging.incoming.beverages.broadcast=true
+
