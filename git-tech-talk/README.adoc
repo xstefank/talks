@@ -44,4 +44,5 @@ git bisect run "grep 'History 3' change-me.txt"
 7. What is the difference between HEAD, the working tree and the index?
 
 https://stackoverflow.com/questions/3689838/whats-the-difference-between-head-working-tree-and-index-in-git
+git ls-files -s # show index
 
