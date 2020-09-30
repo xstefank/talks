@@ -1,0 +1,47 @@
+= GIT tech talk
+
+1. Amend, rebase, squash, force push, hard/soft reset, stash
+
+https://github.com/xstefankTestOrg/set-git-tech-talk/pull/16 - amend, force push
+https://github.com/xstefankTestOrg/set-git-tech-talk/pull/17 - rebase, squash
+
+2. Rewriting PR history in case the squash/rebase goes wrong
+
+https://github.com/xstefankTestOrg/set-git-tech-talk/pull/18
+
+3. Can’t find commit (cherry-pick) or tag
+
+jboss-eap7 and try to cherry pick from wildfly master
+jboss-eap7 and cherry pick from wildfly pr/jboss-eap7 pr
+
+4. An example of use of git rerere !!!
+
+git checkout @~4
+vim git-questions.txt 
+gcam "Add something useful" 
+git merge master
+git reset --hard @~
+vim change-me.txt
+gcam "Add different change"
+git merge master
+cat git-questions.txt 
+
+5. Git bisect (and if there is any automation related to it)
+
+git bisect start HEAD 684b4d5
+git bisect bad # for new state cat change-me.txt | grep 'History 3'
+git bisect good # for old state
+
+git bisect start
+git bisect new
+git bisect old 684b4d5
+
+git bisect start HEAD 684b4d5
+git bisect run "grep 'History 3' change-me.txt"
+
+6. An overview of GitHub CLI
+
+7. What is the difference between HEAD, the working tree and the index?
+
+https://stackoverflow.com/questions/3689838/whats-the-difference-between-head-working-tree-and-index-in-git
+
