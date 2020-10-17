@@ -29,9 +29,9 @@ public class OrderResource {
         String id = UUID.randomUUID().toString();
         orders.put(id, order);
 
-//        processShipping(id);
+        String shipping = processShipping(id);
 
-        return Response.ok(order.toString()).build();
+        return Response.ok(order.toString() + "; " + shipping).build();
     }
 
     @PUT
@@ -46,14 +46,14 @@ public class OrderResource {
         return orders.toString();
     }
 
-    private boolean processShipping(String id) {
+    private String processShipping(String id) {
         Client client = ClientBuilder.newClient();
         try {
             Response response = client.target("http://localhost:8082/shipping/create")
                 .request()
                 .post(Entity.text(id));
 
-            return response.getStatus() == 200;
+            return response.getStatus() == 200 ? response.readEntity(String.class) : "error getting shipment " + response.getStatus();
         } finally {
             if (client != null) {
                 client.close();
