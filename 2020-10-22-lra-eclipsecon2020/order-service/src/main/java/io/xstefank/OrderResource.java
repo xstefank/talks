@@ -1,5 +1,9 @@
 package io.xstefank;
 
+import org.eclipse.microprofile.lra.annotation.Compensate;
+import org.eclipse.microprofile.lra.annotation.Complete;
+import org.eclipse.microprofile.lra.annotation.ws.rs.LRA;
+
 import javax.enterprise.context.ApplicationScoped;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -12,6 +16,7 @@ import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.Entity;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.net.URI;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -26,6 +31,7 @@ public class OrderResource {
     @Path("/create")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response createOrder(Order order) {
+        logNicely("Creating order " + order);
         String id = UUID.randomUUID().toString();
         orders.put(id, order);
 
@@ -37,13 +43,17 @@ public class OrderResource {
     @PUT
     @Path("/remove")
     public Response cancelOrder(@HeaderParam("Order-Id") String orderId) {
+        logNicely("Cancelling order " + orderId);
         Order order = orders.remove(orderId);
         return order != null ? Response.ok(order.toString()).build() : Response.status(404).build();
     }
 
-    @GET
-    public String getAllOrders() {
-        return orders.toString();
+    @PUT
+    @Path("/confirm")
+    public Response confirmOrder(@HeaderParam("Order-Id") String orderId) {
+        logNicely("Confirming order " + orderId);
+        Order order = orders.get(orderId);
+        return order != null ? Response.ok(order.toString()).build() : Response.status(404).build();
     }
 
     private String processShipping(String id) {
@@ -59,5 +69,16 @@ public class OrderResource {
                 client.close();
             }
         }
+    }
+
+    @GET
+    public String getAllOrders() {
+        return orders.toString();
+    }
+
+    private void logNicely(String s) {
+        System.out.println("===========");
+        System.out.println(s);
+        System.out.println("===========");
     }
 }
