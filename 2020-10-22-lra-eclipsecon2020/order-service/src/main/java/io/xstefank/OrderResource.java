@@ -1,9 +1,5 @@
 package io.xstefank;
 
-import org.eclipse.microprofile.lra.annotation.Compensate;
-import org.eclipse.microprofile.lra.annotation.Complete;
-import org.eclipse.microprofile.lra.annotation.ws.rs.LRA;
-
 import javax.enterprise.context.ApplicationScoped;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -16,7 +12,6 @@ import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.Entity;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.net.URI;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
