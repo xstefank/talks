@@ -28,11 +28,21 @@ public class OrderResource {
     public Response createOrder(Order order) {
         logNicely("Creating order " + order);
         String id = UUID.randomUUID().toString();
-        orders.put(id, order);
+        saveOrder(order, id);
 
         String shipping = processShipping(id);
 
         return Response.ok(order.toString() + "; " + shipping).build();
+    }
+
+    private void saveOrder(Order order, String id) {
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        orders.put(id, order);
     }
 
     @PUT
