@@ -1,11 +1,11 @@
 = Innovating MicroProfile with Quarkus and SmallRye
 
-MicroProfile is already established as a standard way of building cloud-native applications in Java. Compared to the traditional JVM devolopment speeds, it is already
-skyrocketing its way through the Java market delivering releases in a continuous fashion every few months. However, if we want to compete with the speeds of other non-JVM languages 
-commonly utilized in cloud-native application developement (like for instance Node or Go) we need to go even faster. This is where Quarkus steps in. With its really frequent releases, 
-it boosts user applications with new features every few weeks. This opens up doors to produce, test, and receive feedback also for the possible future MicroProfile additions which is collected 
-in the communities that utilize these capabilities on everyday basis. Features are typically proposed by users to solve a particular problem and they often resurface in other applications later, so 
-producing a feature in Quarkus as a MicroProfile implementation custom feature namely usually implemented in the SmallRye projects (individual MicroProfile specification implementations) 
+MicroProfile is already established as a standard way of building cloud-native applications in Java. Compared to the traditional JVM development speeds, it is already
+skyrocketing its way through the Java market, continuously delivering releases every few months. However, if we want to compete with the speeds of other non-JVM languages 
+commonly utilized in cloud-native application development (for instance, Node or Go), we need to go even faster. This is where Quarkus steps in. With its really frequent releases, 
+it boosts user applications with new features every few weeks. This opens up doors to produce, test, and receive feedback also for the possible future MicroProfile additions, where the input is collected 
+in the communities that utilize these capabilities on an everyday basis. Features are typically proposed by users to solve a particular problem, and they often resurface in other applications later, so 
+producing a feature in Quarkus as a MicroProfile implementation custom feature, namely usually implemented in the SmallRye projects (individual MicroProfile specification implementations) 
 moves innovation to the next level. In this talk, we will cover some of the additional features that SmallRye and Quarkus already provide for users and which might be eventually included 
 in the MicroProfile specifications in the future. 
 
