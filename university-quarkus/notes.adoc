@@ -1,0 +1,23 @@
+== 01 JAX-RS/MicroProfile REST client
+
+quarkus.rest-client.service-b.url=https://localhost:8081
+quarkus.rest-client.service-b.scope=javax.inject.Singleton
+
+@ClientHeaderParam(name = "CustomHeader", value = "staticHeader")
+
+@ClientHeaderParam(name = "CustomHeader", value = "{computeHeader}")
+
+== 02 MicroProfile Fault Tolerance
+
+org.acme.GreetingResource/hello/Retry/maxRetries=10
+
+== 04 OpenTelemetry
+
+opentelemetry-exporter-otlp
+
+quarkus.application.name=myservice
+quarkus.opentelemetry.tracer.exporter.otlp.endpoint=http://localhost:4317
+quarkus.log.console.format=%d{HH:mm:ss} %-5p traceId=%X{traceId}, parentId=%X{parentId}, spanId=%X{spanId}, sampled=%X{sampled} [%c{2.}] (%t) %s%e%n
+
+
+
