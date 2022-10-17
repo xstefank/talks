@@ -2,8 +2,4 @@
 
 a software engineer working mainly on Red Hat middleware runtimes technologies like WildFly / JBoss EAP application servers, Thorntail, Quarkus and individual components that are included in these projects like RESTEasy, Weld or Hibernate. He is also actively participating in MicroProfile (MicroProfile committer) and Java / Jakarta EE specifications.
 
-
-Martin Štefanko has worked on Red Hat’s middleware portfoliofor the last 7 years. He started with WildFly and JBoss EAP application servers where he got a lot of hands-on experience with many technologies
-and libraries that were included in these distributions. These libraries eventually came to be also included in Quarkus (through WildFly Swarm and later Thorntail to which he was a contributor). He has 
-contributed to Quarkus since version 0.12.0 and is responsible for the SmallRye Health extension. He has also contributed to several other core extensions mostly around MicroProfile integration. He is a 
-MicroProfile committer leading the MicroProfile Health specification. 
+Martin Štefanko has worked on Red Hat’s middleware portfolio for the last 7 years. He started with WildFly and JBoss EAP application servers, where he got a lot of hands-on experience with many technologies and libraries that were included in these distributions. These libraries eventually came to be also included in Quarkus (through WildFly Swarm and later Thorntail, to which he was a contributor). He has contributed to Quarkus since version 0.12.0 and is responsible for the SmallRye Health extension. He has also contributed to several other core extensions, mostly around MicroProfile integration. He is a MicroProfile committer leading the MicroProfile Health specification. 
