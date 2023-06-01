@@ -1,145 +1,143 @@
-Beverage
+Reactive streams
 
---    private State preparationState;
-    
-    public enum State {
-        IN_QUEUE,
-        READY
+quarkus ext add io.quarkus:quarkus-mutiny-reactive-streams-operators
+
+@GET
+@Path("/rs1")
+public void rs1() {
+    CompletionStage<List<String>> cs = ReactiveStreams.of("Luke", "Leia", "Han")
+        .map(String::toUpperCase)
+        .filter(s -> s.startsWith("L"))
+        .toList()
+        .run();
+
+    cs.thenAccept(System.out::println);
+}
+
+--------------------------------------------------------------------
+
+    @GET
+    @Path("/rs1")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Multi<String> rs1() {
+        return Multi.createFrom().items("Luke", "Leia", "Han")
+            .map(String::toUpperCase)
+            .filter(s -> s.startsWith("L"))
+            .onItem()
+            .invoke(s -> Log.infof("Processing %s", s));
     }
 
--- this.preparationState = preparationState;
-
--- 
-    public State getPreparationState() {
-        return preparationState;
+    @GET
+    @Path("/rs2")
+    @Produces(MediaType.SERVER_SENT_EVENTS)
+    public Multi<String> rs2() {
+        return Multi.createFrom().ticks()
+            .every(Duration.ofSeconds(1))
+            .map(aLong -> "Tick #" + aLong);
     }
 
-    public void setPreparationState(State preparationState) {
-        this.preparationState = preparationState;
+  
+@GET
+    @Path("/rs3")
+    public void rs3() {
+        Multi.createFrom().publisher(publisher())
+            .map(processor())
+            .subscribe().withSubscriber(subscriber());
     }
+
+    private Function<Long, String> processor() {
+        return aLong -> "Tick #" + aLong;
+    }
+
+    private Flow.Subscriber<String> subscriber() {
+        return new Flow.Subscriber() {
+            private Flow.Subscription subscription;
+
+            @Override
+            public void onSubscribe(Flow.Subscription subscription) {
+                System.out.println("GreetingResource.onSubscribe " + subscription);
+                this.subscription = subscription;
+                subscription.request(1);
+            }
+
+            @Override
+            public void onNext(Object item) {
+                System.out.println("GreetingResource.onNext " + item);
+                subscription.request(1);
+            }
+
+            @Override
+            public void onError(Throwable throwable) {
+                System.out.println("GreetingResource.onError " + throwable);
+            }
+
+            @Override
+            public void onComplete() {
+                System.out.println("GreetingResource.onComplete");
+            }
+        };
+    }
+
+    private Flow.Publisher<Long> publisher() {
+        return Multi.createFrom().ticks()
+            .every(Duration.of(500, ChronoUnit.MILLIS))
+            .select()
+            .first(10);
+    }
+
+
+=================================================================================
+
+qa smallrye-reactive-messaging-kafka
+
 
 -------------------------------------------------------------------------
 BaristaResource
 
--- @ApplicationScoped
--- 
-    @Incoming("orders")
+  @Incoming("orders")
     @Outgoing("queue")
--- 
-        return new Beverage(order, name, Beverage.State.READY);
-
-
-------------------------------------------------------------------------
-OrderDeserializer
-
-package me.escoffier.quarkus.coffeeshop.codecs;
-
-import io.quarkus.kafka.client.serialization.JsonbDeserializer;
-import me.escoffier.quarkus.coffeeshop.Order;
-
-public class OrderDeserializer extends JsonbDeserializer<Order> {
-    public OrderDeserializer() {
-        super(Order.class);
+    @Blocking
+    public Beverage process(Order order) {
+        return prepare(order);
     }
-}
 
 
-------------------------------------------------------------------------
+----------------------
 
-
-quarkus.http.port=8081
-
-# orders topic
-mp.messaging.incoming.orders.connector=smallrye-kafka
-mp.messaging.incoming.orders.value.deserializer=me.escoffier.quarkus.coffeeshop.codecs.OrderDeserializer
+## Orders topic
 mp.messaging.incoming.orders.auto.offset.reset=earliest
-mp.messaging.incoming.orders.group.id=baristas
-
-# queue topic
-mp.messaging.outgoing.queue.connector=smallrye-kafka
-mp.messaging.outgoing.queue.value.serializer=io.quarkus.kafka.client.serialization.JsonbSerializer
 
 
 ----------------------------------------------------------------------
 ----------------------------------------------------------------------
 CoffeeShopResource
 
---
 
-    @Inject
-    @Channel("queue")
-    Emitter<Beverage> queue;
-    
-    @Inject
-    @Channel("orders")
-    Emitter<Order> orders;
-    
+    // Orders emitter (orders)
+    @Channel("orders") Emitter<Order> orders;
+    // Queue emitter (beverages)
+    @Channel("queue") Emitter<Beverage> queue;
+
     @POST
     @Path("/messaging")
     public Order messaging(Order order) {
-        order.setOrderId(getId());
-        
-        queue.send(Beverage.queued(order));
+        logger.infof("Received order %s on /messaging", order);
+        order = order.withOrderId(getId());
         orders.send(order);
-        
+        queue.send(Beverage.queued(order));
         return order;
     }
 
-
----------------------------------------------------------------
-BeverageDeserializer
-
-package me.escoffier.quarkus.coffeeshop.codecs;
-
-import io.quarkus.kafka.client.serialization.JsonbDeserializer;
-import me.escoffier.quarkus.coffeeshop.model.Beverage;
-
-public class BeverageDeserializer extends JsonbDeserializer<Beverage> {
-    public BeverageDeserializer() {
-        super(Beverage.class);
+    private String getId() {
+        return UUID.randomUUID().toString();
     }
-}
 
+-------------------------------------------------
+NO, just mention
 
---------------------------------------------------------------
-BoardResource
-
-@Path("/queue")
-public class BoardResource {
-    
-    @Inject
-    @Channel("beverages")
-    Flowable<Beverage> queue;
-
-    private Jsonb json = JsonbBuilder.create();
-
-    @GET
-    @Produces(MediaType.SERVER_SENT_EVENTS)
-    public Publisher<String> getQueue() {
-        return queue.map(o -> json.toJson(o));
-    }
-}
-
-
---------------------------------------------------------------------
-
-quarkus.http.port=8080
-
-## HTTP Client
-me.escoffier.quarkus.coffeeshop.http.BaristaService/mp-rest/url=http://localhost:8081
-
-# Orders topic
-mp.messaging.outgoing.orders.connector=smallrye-kafka
-mp.messaging.outgoing.orders.value.serializer=io.quarkus.kafka.client.serialization.JsonbSerializer
-
-# Queue topic
-mp.messaging.outgoing.queue.connector=smallrye-kafka
-mp.messaging.outgoing.queue.value.serializer=io.quarkus.kafka.client.serialization.JsonbSerializer
-mp.messaging.outgoing.queue.broadcast=true
-
-# Beverages topic
-mp.messaging.incoming.beverages.connector=smallrye-kafka
-mp.messaging.incoming.beverages.value.deserializer=me.escoffier.quarkus.coffeeshop.codecs.BeverageDeserializer
+## Beverage channel -> queue topic
 mp.messaging.incoming.beverages.topic=queue
-mp.messaging.incoming.beverages.broadcast=true
+
+## Configure the dev service to create a topic 'orders' with 4 partitions
+quarkus.kafka.devservices.topic-partitions.orders=4
 
