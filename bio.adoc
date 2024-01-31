@@ -7,4 +7,4 @@ Martin Štefanko has worked on Red Hat’s middleware portfolio for the last 7 y
 
 == short
 
-Principal software engineer at Red Hat, BrnoJUG leader, MicroProfile committer, working on Red Hat middleware technologies like Quarkus, SmallRye, Wildfly, JBoss middleware (RESTEasy, Weld, ...), programming and microservices enthusiast.
+Principal software engineer at Red Hat, BrnoJUG leader, author Quarkus in Action, MicroProfile committer, working on Red Hat middleware technologies like Quarkus, SmallRye, Wildfly, JBoss middleware (RESTEasy, Weld, ...), programming and microservices enthusiast.
