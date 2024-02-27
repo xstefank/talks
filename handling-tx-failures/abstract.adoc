@@ -1,4 +1,4 @@
-= Transactions recovery in distributed systems
+= Transactions in distributed systems
 
 Distributed systems are becoming the default way of developing Java applications. When individual parts of the system pass messages through the network, we must expect that some communication can fail. As defined by the CAP theorem, we must then make a design choice between the consistency and availability of the developed system. Traditional ACID transactions in the distributed system are problematic as the locking of resources required for consistency might cause the blocking of valid user requests because of the consistency protocol communication failures. Alternative BASE transactions based on the saga pattern focus on the availability of system resources at a tradeoff provided by the eventual consistency guarantee. However, network failures can still cause major problems. 
 
