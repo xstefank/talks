@@ -6,9 +6,9 @@ This talk aims to highlight the essential strategies and principles that empower
 
 - Cultivate a strong engineering foundation
 - Set achievable goals to mark progress
-- Embracing communication and soft skills
-- Recognizing and mitigating burnout or overwork
-- Seeking mentorship for continued growth
+- Embrace communication and soft skills
+- Recognize and mitigate burnout or overwork
+- Seek mentorship for continued growth
 
 By proactively addressing these key areas, software engineers can fortify themselves against common career pitfalls, ensuring fulfillment and resilience in an ever-evolving industry. Join us as we delve into the strategies and insights that pave the way for a well-grounded and flourishing career in software engineering.
 
