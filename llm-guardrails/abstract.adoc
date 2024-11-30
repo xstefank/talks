@@ -4,6 +4,5 @@ The use of AI in critical, sophisticated scenarios is desirable, but we all know
 
 Let us introduce you to the LLM guardrails. In this talk, we'll dive into the Quarkus LangChain4j integration that provides you with the ability to verify and/or modify both requests and responses that are being exchanged with your model. Through practical examples, we'll explore the options available for validating user-provided inputs, rewriting or retrying outputs, and even reprompting the model if needed.
 
-The guardrails not only enhance the reliability of AI-driven applications but also allow us to build more trust in our AI systems, one response at a time. Join us as we navigate guardrails and explain how we can ensure our LLMs stay on track, even in the most challenging scenarios.
-
+The guardrails not only enhance the reliability of AI-driven applications but also allow us to build more trust in our AI systems, one response at a time. Come to learn how we can ensure our LLMs stay on track, even in the most challenging scenarios.
 
