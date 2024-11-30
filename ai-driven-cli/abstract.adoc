@@ -1,4 +1,4 @@
-AI-infused command-line applications
+= AI-infused command-line applications
 
 AI models have become an integral part of our daily lives, enhancing our platforms, IDEs, and solving problems through exposed chat interfaces. However, we often rely on general-purpose models, endlessly re-explaining our use cases for repetitive tasks. What if we could simplify this process and build specialized solutions tailored to our specific requirements?
 
