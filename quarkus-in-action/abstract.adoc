@@ -1,0 +1,8 @@
+= Quarkus in Action...in Action!
+
+Quarkus is one of the most dynamic and fast-evolving projects in the Java ecosystem today. Even six years after its initial release, it continues to push boundaries—and just last year, it surpassed 1,000 contributors in its main repository!
+
+In this session, we'll introduce Quarkus in Action, the latest (and coincidentally, the first) book authored by the speakers. While we can't cover the entire book in one talk, we'll highlight our favorite features—the ones that truly showcase Quarkus' strengths. Expect live demos of productivity powerhouses like Dev Mode, continuous testing, Dev UI, and Dev Services. We'll have something for you whether you're focused on a blazing-fast local development experience, seamless deployment workflows, or even the metrics influencing your cloud bills.
+
+This talk isn't about explaining every Quarkus feature in detail—it's about showing you why you should give it a try. And if we succeed in inspiring you, Quarkus in Action will be the perfect next step on your learning journey!
+
