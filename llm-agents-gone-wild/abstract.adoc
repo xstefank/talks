@@ -1,0 +1,10 @@
+= LLM Agents Gone Wild (And How to Tame Them with Quarkus)
+
+LLM agents look impressive in demos, but problems arise when they hit production. They hallucinate, break your JSON schema, ignore system prompts, and occasionally decide they know better than your business logic.
+
+In this talk, we’ll move beyond agentic “Hello World” and explore what it really takes to build reliable LLM agents in Java with Quarkus.
+
+We'll examine the different options for building agentic systems, with a focus on architecture. You'll see how to secure both agent inputs and outputs with guardrails, how to make agent interactions observable, and — last but not least — the testing strategies to verify your agents’ functionality. Step by step, we'll build a production-ready LLM agent so that you can understand the different problems and their solutions.
+
+We can't make LLM agents fully reliable. But with the tools presented in this talk, we can at least make them predictable.
+
